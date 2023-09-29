@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 
 const Task = (props) => {
 
@@ -44,6 +45,15 @@ const Task = (props) => {
                             Due: {props.deadline}
                         </Typography>
                     </Box>
+                    <Chip
+                        label={props.priority}
+                        sx={{
+                            backgroundColor: props.priority === 'High' ? 'red' : props.priority === 'Medium' ? 'orange' : 'green',
+                            color: 'white',
+                            fontWeight: 'bold',
+                            margin: '10px'
+                        }}
+                    />
                     <Typography
                         component="p"
                         variant="subtitle1"
@@ -53,7 +63,7 @@ const Task = (props) => {
                         {props.description}
                     </Typography>
                 </CardContent>
-                <CardActions sx={{justifyContent: 'space-between', padding: '20px'}}>
+                <CardActions sx={{ justifyContent: 'space-between', padding: '20px' }}>
                     <Button variant='contained' size='small' color='success' onClick={props.markDone}>
                         Done
                     </Button>
